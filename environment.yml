@@ -1,0 +1,20 @@
+name: qubo-facility-location
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - pyyaml
+  - coverage
+  - mypy
+  - pylint
+  - pip
+  - pip:
+      - pyqubo
+      - dimod
+      - dwave-neal
+      - dynex

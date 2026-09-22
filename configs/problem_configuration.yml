@@ -1,0 +1,15 @@
+problem:
+  name: small_facility_location
+
+opening_costs:
+  - 8
+  - 6
+
+assignment_costs:
+  - [2, 5]
+  - [3, 2]
+  - [4, 3]
+
+penalties:
+  assignment: 10.0
+  open: 10.0
