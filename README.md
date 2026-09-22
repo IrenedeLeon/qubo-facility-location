@@ -314,8 +314,6 @@ $$g = \frac{C_{\text{best}} - C^*}{C^*}$$
 
 where:
 
-where:
-
 - $C_{\text{best}}$ is the cost of the best feasible solution found in the run;
 - $C^*$ is the known optimal feasible cost.
 
