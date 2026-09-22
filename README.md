@@ -50,29 +50,17 @@ Let:
 
 The economic objective is
 
-$$
-C(x,y) = \sum_j f_j y_j + \sum_i \sum_j c_{ij} x_{ij}
-$$
+$$C(x,y) = \sum_j f_j y_j + \sum_i \sum_j c_{ij} x_{ij}$$
 
 ### Assignment constraint
 
 Each client must be assigned to exactly one facility:
 
-$$
-\sum_j x_{ij} = 1 \quad \forall i
-$$
+$$\sum_j x_{ij} = 1 \quad \forall i$$
 
 This constraint is encoded using the quadratic penalty
 
-$$
-P_{\mathrm{assignment}}
-=
-\lambda_a
-\sum_i
-\left(
-\sum_j x_{ij} - 1
-\right)^2
-$$
+$$P_{\mathrm{assignment}} = \lambda_a \sum_i \left(\sum_j x_{ij} - 1\right)^2$$
 
 where $\lambda_a$ controls the strength of the assignment penalty.
 
@@ -80,19 +68,11 @@ where $\lambda_a$ controls the strength of the assignment penalty.
 
 A client can only be assigned to an open facility:
 
-$$
-x_{ij} \leq y_j
-$$
+$$x_{ij} \leq y_j$$
 
 For binary variables, a convenient quadratic penalty is
 
-$$
-P_{\mathrm{open}}
-=
-\lambda_o
-\sum_{i,j}
-x_{ij}(1-y_j)
-$$
+$$P_{\mathrm{open}} = \lambda_o \sum_{i,j} x_{ij}(1-y_j)$$
 
 where $\lambda_o$ controls the strength of the open-facility penalty.
 
@@ -100,15 +80,7 @@ where $\lambda_o$ controls the strength of the open-facility penalty.
 
 The complete QUBO Hamiltonian is
 
-$$
-H
-=
-C
-+
-P_{\mathrm{assignment}}
-+
-P_{\mathrm{open}}
-$$
+$$H = C + P_{\mathrm{assignment}} + P_{\mathrm{open}}$$
 
 For feasible solutions, both penalty terms vanish and therefore $H=C$.
 
@@ -137,9 +109,7 @@ The optimal feasible solution is to open only facility B and assign all clients 
 
 Its economic cost is
 
-$$
-C^* = 6 + 5 + 2 + 3 = 16
-$$
+$$C^* = 6 + 5 + 2 + 3 = 16$$
 
 The corresponding BQM contains **8 binary variables**:
 
@@ -184,9 +154,7 @@ The project therefore analyzes the feasibility of the ground state as the penalt
 
 With the assignment penalty fixed at $\lambda_a=10$, the reference instance requires
 
-$$
-\lambda_o > 3
-$$
+$$\lambda_o > 3$$
 
 for all ground states to be feasible.
 
@@ -196,17 +164,13 @@ At exactly $\lambda_o=3$, feasible and infeasible ground states become degenerat
 
 With the open-facility penalty fixed at $\lambda_o=10$, the corresponding threshold is
 
-$$
-\lambda_a > \frac{16}{3}
-$$
+$$\lambda_a > \frac{16}{3}$$
 
 Again, equality produces degeneracy between feasible and infeasible ground states.
 
 The experiments use
 
-$$
-\lambda_a = \lambda_o = 10
-$$
+$$\lambda_a = \lambda_o = 10$$
 
 which provides a comfortable margin for the tested benchmark instances.
 
@@ -230,29 +194,13 @@ Two quantities are particularly useful.
 
 The optimal sample rate is the fraction of individual reads that return the known optimum:
 
-$$
-r_{\mathrm{optimal}}
-=
-\frac{
-N_{\mathrm{optimal\ samples}}
-}{
-N_{\mathrm{samples}}
-}
-$$
+$$r_{\mathrm{optimal}} = \frac{N_{\mathrm{optimal\ samples}}}{N_{\mathrm{samples}}}$$
 
 ### Run success rate
 
 The run success rate is the fraction of independent runs that contain the optimum at least once:
 
-$$
-r_{\mathrm{success}}
-=
-\frac{
-N_{\mathrm{successful\ runs}}
-}{
-N_{\mathrm{runs}}
-}
-$$
+$$r_{\mathrm{success}} = \frac{N_{\mathrm{successful\ runs}}}{N_{\mathrm{runs}}}$$
 
 These metrics answer different questions.
 
@@ -308,19 +256,11 @@ The benchmark is therefore a **controlled synthetic scalability experiment**, ra
 
 With $N_f=2$ facilities and $N_c$ clients, the number of binary variables is
 
-$$
-n
-=
-N_f + N_cN_f
-=
-2 + 2N_c
-$$
+$$n = N_f + N_cN_f = 2 + 2N_c$$
 
 The corresponding unconstrained binary search space contains
 
-$$
-2^n
-$$
+$$2^n$$
 
 possible states.
 
@@ -370,15 +310,7 @@ A sampler may fail to return the exact optimum while still producing solutions t
 
 For each independent run, the best feasible sampled solution is therefore compared with the known feasible optimum using the relative optimality gap
 
-$$
-g
-=
-\frac{
-C_{\mathrm{best}} - C^*
-}{
-C^*
-}
-$$
+$$g = \frac{C_{\mathrm{best}} - C^*}{C^*}$$
 
 where:
 
@@ -424,21 +356,9 @@ Under the tested fixed sampling budget, exact-optimum recovery deteriorates subs
 
 `dimod.ExactSolver` performs exhaustive enumeration of the binary state space.
 
-The number of candidate states grows as
+The number of candidate states grows as $2^n$ with the number of binary variables $n$.
 
-$$
-2^n
-$$
-
-with the number of binary variables $n$.
-
-The simulated-annealing benchmark, in contrast, uses a fixed sampling budget of
-
-$$
-20 \times 100 = 2000
-$$
-
-samples per problem size.
+The simulated-annealing benchmark, in contrast, uses a fixed sampling budget of $20 \times 100 = 2000$ samples per problem size.
 
 The runtime curves should therefore **not** be interpreted as evidence of computational speedup.
 
