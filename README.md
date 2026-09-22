@@ -109,7 +109,7 @@ The optimal feasible solution is to open only facility B and assign all clients 
 
 Its economic cost is
 
-$$C^* = 6 + 5 + 2 + 3 = 16$$
+$$C^{*} = 6 + 5 + 2 + 3 = 16$$
 
 The corresponding BQM contains **8 binary variables**:
 
@@ -136,7 +136,7 @@ Optimal energy: 16
 Feasible: True
 ```
 
-This agrees with the analytically known optimum $C^*=16$.
+This agrees with the analytically known optimum $C^{*}=16$.
 
 Independent constraint validation is important because obtaining the minimum of a QUBO does not, by itself, prove that the QUBO correctly represents the original constrained problem.
 
@@ -256,7 +256,7 @@ The benchmark is therefore a **controlled synthetic scalability experiment**, ra
 
 With $N_f=2$ facilities and $N_c$ clients, the number of binary variables is
 
-$$n = N_f + N_cN_f = 2 + 2N_c$$
+$$n = N_f + N_c N_f = 2 + 2N_c$$
 
 The corresponding unconstrained binary search space contains
 
@@ -280,7 +280,7 @@ All simulated-annealing instances use the same fixed sampling budget:
 
 Exact enumeration is restricted to instances containing at most 22 binary variables.
 
-For larger instances, the optimal feasible economic cost is computed analytically using the two-facility structure and is used as the reference value $C^*$.
+For larger instances, the optimal feasible economic cost is computed analytically using the two-facility structure and is used as the reference value $C^{*}$.
 
 ---
 
@@ -308,14 +308,14 @@ Exact-optimum recovery alone does not describe the quality of non-optimal soluti
 
 A sampler may fail to return the exact optimum while still producing solutions that are very close to it.
 
-For each independent run, the best feasible sampled solution is therefore compared with the known feasible optimum using the relative optimality gap
+For each independent run, the best feasible sampled solution is therefore compared with the known feasible optimum using the relative optimality gap:
 
-$$g = \frac{C_{\mathrm{best}} - C^*}{C^*}$$
+$$g = \frac{C_{\mathrm{best}} - C^{*}}{C^{*}}$$
 
 where:
 
 - $C_{\mathrm{best}}$ is the cost of the best feasible solution found in the run;
-- $C^*$ is the known optimal feasible cost.
+- $C^{*}$ is the known optimal feasible cost.
 
 ### Relative optimality gap
 
@@ -335,7 +335,7 @@ Selected results from the reference experiment are:
 | 82 | 0% | 3.79% |
 | 102 | 0% | 4.77% |
 
-For the largest tested instance, the known feasible optimum is $C^*=130$.
+For the largest tested instance, the known feasible optimum is $C^{*}=130$.
 
 The mean best feasible solution across independent runs was approximately $136.2 \pm 1.0$, corresponding to a mean relative optimality gap of approximately $4.8\%$.
 
