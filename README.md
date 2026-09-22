@@ -310,12 +310,12 @@ A sampler may fail to return the exact optimum while still producing solutions t
 
 For each independent run, the best feasible sampled solution is therefore compared with the known feasible optimum using the relative optimality gap:
 
-$$g = \frac{C_{\text{best}} - C^*}{C^*}$$
+$$g = \frac{C_{\mathrm{best}} - C_{\mathrm{opt}}}{C_{\mathrm{opt}}}$$
 
 where:
 
-- $C_{\text{best}}$ is the cost of the best feasible solution found in the run;
-- $C^*$ is the known optimal feasible cost.
+- $C_{\mathrm{best}}$ is the cost of the best feasible solution found in the run;
+- $C_{\mathrm{opt}}$ is the known optimal feasible cost.
 
 ### Relative optimality gap
 
